@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Tourist Destinations in India </h1>
+
+<div class="container d-flex flex-wrap gap-4 justify-content-start" >
+
+            {% for place in places %}
+            <div class="card m-3" style="width: 18rem; " >
+                {% if place.Images %}
+              <img src="{{place.Images.url}}" class="card-img-top" alt="{{ place.PlaceName }}" style="height: 10rem;"/>
+                {% else %}
+                 <p>No image available</p>
+                    {% endif %}
+              <div class="card-body">
+                  <h5 class="card-title">{{ place.PlaceName }} </h5>
+                  <p class="card-text"> {{ place.Description|truncatewords:20 }}</p>
+                  <a href="{% url 'detail' place.pk %}" class="card-link">more </a>
+                  <a href="{% url 'update_place' place.pk %}" class="btn btn-primary">Edit </a>
+                  <a href="{% url 'delete_book' place.pk %}" class="btn btn-primary">Delete </a>
+              </div>
+            </div>
+    {% endfor %}
+</div>
+{% endblock %}

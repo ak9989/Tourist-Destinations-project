@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+
+{{place.PlaceName}}
+<br>
+{{ place.Weather }}
+{{ place.State }}
+{{ place.District }}
+{{ place.GoogleMap }}
+{{ place.Description }}
+{{ place.Images }}
+
+<a href="{% url 'home' %}" class="btn btn-secondary">back</a>
+
+{% endblock %}
